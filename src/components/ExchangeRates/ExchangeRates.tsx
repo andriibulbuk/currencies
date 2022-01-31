@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import CurrencyFlag, { CurrencySymbol } from 'react-flag-symbol-currency';
 import { currenciesResponse } from '../../types';
 
 type Props = {
@@ -42,8 +43,20 @@ export const ExchangeRates: React.FC<Props> = ({ currencies }) => {
         <tbody>
           {currenciesToShow && currenciesToShow.map(({ currency, value, id }) => (
             <tr key={id}>
-              <td>{currency}</td>
-              <td>{value}</td>
+              <td className="table__currency">
+                <CurrencyFlag
+                  currency={currency.toLowerCase()}
+                  width="30px"
+                  className="flag"
+                />
+                {currency}
+              </td>
+              <td>
+                <div className="table__value">
+                  <span><CurrencySymbol currency={currency} /></span>
+                  <span>{value}</span>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

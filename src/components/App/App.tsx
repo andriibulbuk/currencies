@@ -9,6 +9,7 @@ import { ExchangeRates } from '../ExchangeRates/ExchangeRates';
 // import { getCurrencies } from './api';
 import { currenciesResponse } from '../../types';
 import responseJson from '../../response.json';
+import logoExchange from '../../img/exchange.svg';
 
 const App: React.FC = () => {
   const [currentCurrencies, setCurrentCurrencies] = useState<currenciesResponse | null>(null);
@@ -29,24 +30,34 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <nav className="navbar has-shadow" role="navigation" aria-label="main navigation">
-        <div className="navbar-menu">
-          <div className="navbar-start">
-            <NavLink
-              to="/convert"
-              className="navbar-item is-active"
-            >
-              Convert
-            </NavLink>
+      <nav className="navbar">
+        <div className="navbar__links">
+          <NavLink
+            to="/convert"
+            className="navbar__item"
+          >
+            Convert
+          </NavLink>
 
-            <NavLink
-              to="/exchangeCurrencies"
-              className="navbar-item is-active"
-            >
-              Exchange rates
-            </NavLink>
-          </div>
+          <NavLink
+            to="/exchangeCurrencies"
+            className="navbar__item"
+          >
+            Exchange rates
+          </NavLink>
         </div>
+
+        <NavLink
+          className="navbar__item navbar__logo"
+          to="/exchangeCurrencies"
+        >
+          <img
+            src={logoExchange}
+            alt="logo"
+            className="logo"
+          />
+          <div className="currency-flag currency-flag-usd" />
+        </NavLink>
       </nav>
 
       <div className="App__content">
@@ -57,7 +68,7 @@ const App: React.FC = () => {
       </div>
 
       <footer className="App__footer">
-        Footer
+        footer
       </footer>
     </div>
   );
